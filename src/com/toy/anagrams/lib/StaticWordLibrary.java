@@ -83,7 +83,7 @@ final class StaticWordLibrary extends WordLibrary {
         "unsigned",
         "traditional"};
 
-    private static final String[] SCRAMBLED_WORD_LIST = {
+    /*private static final String[] SCRAMBLED_WORD_LIST = {
         "batsartcoin",
         "maibuguos",
         "ratimhteci",
@@ -130,7 +130,7 @@ final class StaticWordLibrary extends WordLibrary {
         "nuisngde",
         "rtdatioialn"
     };
-    
+    */
     final static WordLibrary DEFAULT = new StaticWordLibrary();
 
     /**
@@ -154,7 +154,8 @@ final class StaticWordLibrary extends WordLibrary {
      * @return word at that index in its scrambled form
      */
     public String getScrambledWord(int idx) {
-        return SCRAMBLED_WORD_LIST[idx];
+    	String[] WORD = Replace(WORD_LIST);
+        return WORD[idx];//SCRAMBLED_WORD_LIST[idx];
     }
 
     /**
@@ -174,5 +175,19 @@ final class StaticWordLibrary extends WordLibrary {
     public boolean isCorrect(int idx, String userGuess) {
         return userGuess.equals(getWord(idx));
     }
+    //WORD_LISTの順番を入れ替えるメソッド
+    public String[]  Replace(String[] WORDS) {
+ 
+    	//一時的におく変数
+    	String tmp ;
+    	for(int i=0;i<WORDS.length;i++) {
+    		tmp = WORDS[i];
+    		WORDS[WORDS.length - i-1] = tmp;
+    		
+    	}
+    	
+    	return WORDS;
+    }
+    }
+    
 
-}
